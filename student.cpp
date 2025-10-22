@@ -21,7 +21,7 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const nm) {
-  const char* src = nm ? nm : "";
+  const char* src = (nm ? nm : "");
   char* buf = new char[std::strlen(src) + 1];
   std::strcpy(buf, src);
   if (name) delete[] name;
@@ -39,9 +39,7 @@ Student::~Student() {
 }
 
 Student & Student::operator=(const Student &right) {
-  // The next two lines are standard, and you should keep them.
-  // They avoid problems with self-assignment where you might free up 
-  // memory before you copy from it.  (e.g. x = x)
+
 
   if (&right == this) 
     return (*this);
@@ -56,7 +54,6 @@ Student & Student::operator=(const Student &right) {
   return (*this); 
 
 }
-
 std::string Student::toString() const {
-  return std::string(name ? name : "") + " (" + std::to_string(perm) + ")";
+  return std::string("[") + (name ? name : "") + "," + std::to_string(perm) + "]";
 }
